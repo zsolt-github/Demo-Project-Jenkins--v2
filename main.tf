@@ -22,7 +22,7 @@ module "base_infra" {
 module "aks"{
   source = "./aks"
   
-  aks_cluster_name  = "AKS-${local.name}"
+  aks_cluster_name  = "System-${local.name}"
   az_location   = var.az_location
   az_resource_group_name = module.base_infra.resource_group_name
   aks_version = var.aks_version
@@ -42,6 +42,14 @@ module "aks"{
   #aks_appId = 
   #aks_password = 
 
+
+  aks_worker_node_1_name = var.aks_worker_node_1_name
+  aks_worker_node_1_vm_size = var.aks_worker_node_1_vm_size
+  aks_worker_node_1_labels = var.aks_worker_node_1_labels
+  aks_worker_node_1_count = var.aks_worker_node_1_count
+  #aks_worker_node_1_subnet_id = module.base_infra.subnet_1_id
+
+
 }
 
 module "helm"{
@@ -50,6 +58,15 @@ module "helm"{
   jenkins_admin_password = var.jenkins_admin_password
 
 }
+
+
+module "cloudflare" {
+  source = "./cloudflare"
+
+  az_resource_group_name = module.base_infra.resource_group_name
+
+}
+
 
 
 /*

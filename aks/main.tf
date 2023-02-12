@@ -42,10 +42,24 @@ resource "azurerm_kubernetes_cluster" "aks" {
   tags = var.aks_system_node_labels
 }
 
+resource "azurerm_kubernetes_cluster_node_pool" "aks-worker-pool-1" {
+  name                  = var.aks_worker_node_1_name
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.aks.id
+  vm_size               = var.aks_worker_node_1_vm_size
+  node_count            = var.aks_worker_node_1_count
+  node_labels           = var.aks_worker_node_1_labels
+  vnet_subnet_id        = var.aks-subnet_id
+  depends_on            = [azurerm_kubernetes_cluster.aks]
+
+  enable_auto_scaling   = false
+  
+  tags = var.aks_worker_node_1_labels
+}
+
 
 resource "kubernetes_namespace" "k8s-ns-jenkins" {
   metadata {
     name = "jenkins"
   }
-  depends_on = [azurerm_kubernetes_cluster.aks]
+  depends_on = [azurerm_kubernetes_cluster_node_pool.aks-worker-pool-1]
 }

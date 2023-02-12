@@ -2,9 +2,10 @@ output "resource_group_name" {
   value = module.base_infra.resource_group_name
 }
 
-output "aks_namespace-jenkins_id" {
-  value = module.aks.aks_namespace-jenkins_id
-}
+#output "aks_namespace-jenkins_id" {
+#  value = module.aks.aks_namespace-jenkins_id
+#  sensitive = true
+#}
 
 #output "output-public_ip_1_address" {
   #value = data.azurerm_public_ip.data-public_ip_1.ip_address

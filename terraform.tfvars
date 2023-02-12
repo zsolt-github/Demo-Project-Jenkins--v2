@@ -80,15 +80,26 @@ aks_version = "1.24.9"
 #    Pool name must start with a lowercase letter, have max length of 12, and only have characters a-z0-9
 aks_system_node_name = "system"
 aks_system_node_count = 1
-#aks_system_node_vm_size = "Standard_B2s" # 2 vCPUs + 4GB RAM + 4 Data disks + 1280 IOPS - $34.96/month
-aks_system_node_vm_size = "Standard_D2as_v4" # 2 vCPUs + 8GB RAM + 4 Data disks + 3200 IOPS - $81.03/month
-#aks_system_node_vm_size =  "Standard_B4ms" # 4 vCPUs + 16GB RAM + 8 Data disks + 2880 IOPS - $137.97/month
+aks_system_node_vm_size = "Standard_B2ms" # 1 vCPUs + 2GB RAM + 2 Data disks + 640 IOPS - $17.23/month
+#aks_system_node_vm_size = "Standard_B2s" # 2 vCPUs + 4GB RAM + 4 Data disks + 1280 IOPS - $30.37/month
 aks_system_node_node_type = "VirtualMachineScaleSets"
 aks_system_node_labels = { "node-name" : "system", "custom-label-1" : "sys" }
 
 aks_load_balancer_sku = "standard"
 aks_network_plugin = "kubenet"
 aks_identity_type = "SystemAssigned"
+
+
+aks_worker_node_1_name = "worker1"
+aks_worker_node_1_vm_size = "Standard_B2s" # 2 vCPUs + 4GB RAM + 4 Data disks + 1280 IOPS - $30.37/month
+#aks_worker_node_1_vm_size = "Standard_D2as_v4" # 2 vCPUs + 8GB RAM + 4 Data disks + 3200 IOPS - $70.08/month
+#aks_worker_node_1_vm_size =  "Standard_B4ms" # 4 vCPUs + 16GB RAM + 8 Data disks + 2880 IOPS - $121.18/month
+#aks_worker_node_1_node_type = "VirtualMachineScaleSets"
+aks_worker_node_1_count = 1
+aks_worker_node_1_labels = { "node-name" : "worker1", "custom-label-1" : "wrk1"}
+
+
+
 
 
 

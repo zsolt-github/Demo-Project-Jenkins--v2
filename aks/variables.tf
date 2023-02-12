@@ -73,6 +73,34 @@ variable "aks_system_node_labels" {
 }
 
 
+
+# --- Variables for the Azure Kubernetes Worker node 1 -------------------------
+
+variable "aks_worker_node_1_name" {
+    type = string
+    description = "Name of Kubernetes system node."
+}
+
+variable "aks_worker_node_1_vm_size" {
+    type = string
+    description = "VM type of Kubernetes worker node 1."
+}
+
+variable "aks_worker_node_1_count" {
+    type = number
+    description = "Number of Kubernetes nodes in worker node 1."
+}
+
+variable "aks_worker_node_1_labels" {
+    type = map(string)
+    description = "Kubernetes Node Labels for the mointoring node."
+}
+
+
+
+
+
+
 /*
 # --- Variables for Jenkins -------------------------
 
